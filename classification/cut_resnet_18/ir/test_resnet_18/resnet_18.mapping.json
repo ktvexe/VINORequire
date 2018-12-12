@@ -1,0 +1,1025 @@
+[
+    {
+        "IR": {
+            "id": 0,
+            "name": "data",
+            "port": 0
+        },
+        "framework": {
+            "name": "data",
+            "port": "data"
+        }
+    },
+    {
+        "IR": {
+            "id": 1,
+            "name": "conv1",
+            "port": 2
+        },
+        "framework": {
+            "name": "conv1",
+            "port": "conv1"
+        }
+    },
+    {
+        "IR": {
+            "id": 2,
+            "name": "bn_conv1",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn_conv1",
+            "port": "conv1"
+        }
+    },
+    {
+        "IR": {
+            "id": 3,
+            "name": "scale_conv1",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale_conv1",
+            "port": "conv1"
+        }
+    },
+    {
+        "IR": {
+            "id": 4,
+            "name": "conv1_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "conv1_relu",
+            "port": "conv1"
+        }
+    },
+    {
+        "IR": {
+            "id": 5,
+            "name": "pool1",
+            "port": 1
+        },
+        "framework": {
+            "name": "pool1",
+            "port": "pool1"
+        }
+    },
+    {
+        "IR": {
+            "id": 6,
+            "name": "res2a_branch1",
+            "port": 2
+        },
+        "framework": {
+            "name": "res2a_branch1",
+            "port": "res2a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 7,
+            "name": "bn2a_branch1",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn2a_branch1",
+            "port": "res2a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 8,
+            "name": "scale2a_branch1",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale2a_branch1",
+            "port": "res2a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 9,
+            "name": "res2a_branch2a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res2a_branch2a",
+            "port": "res2a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 10,
+            "name": "bn2a_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn2a_branch2a",
+            "port": "res2a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 11,
+            "name": "scale2a_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale2a_branch2a",
+            "port": "res2a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 12,
+            "name": "res2a_branch2a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res2a_branch2a_relu",
+            "port": "res2a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 13,
+            "name": "res2a_branch2b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res2a_branch2b",
+            "port": "res2a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 14,
+            "name": "bn2a_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn2a_branch2b",
+            "port": "res2a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 15,
+            "name": "scale2a_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale2a_branch2b",
+            "port": "res2a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 16,
+            "name": "res2a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res2a",
+            "port": "res2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 17,
+            "name": "res2a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res2a_relu",
+            "port": "res2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 18,
+            "name": "res2b_branch2a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res2b_branch2a",
+            "port": "res2b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 19,
+            "name": "bn2b_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn2b_branch2a",
+            "port": "res2b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 20,
+            "name": "scale2b_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale2b_branch2a",
+            "port": "res2b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 21,
+            "name": "res2b_branch2a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res2b_branch2a_relu",
+            "port": "res2b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 22,
+            "name": "res2b_branch2b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res2b_branch2b",
+            "port": "res2b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 23,
+            "name": "bn2b_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn2b_branch2b",
+            "port": "res2b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 24,
+            "name": "scale2b_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale2b_branch2b",
+            "port": "res2b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 25,
+            "name": "res2b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res2b",
+            "port": "res2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 26,
+            "name": "res2b_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res2b_relu",
+            "port": "res2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 27,
+            "name": "res3a_branch1",
+            "port": 2
+        },
+        "framework": {
+            "name": "res3a_branch1",
+            "port": "res3a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 28,
+            "name": "bn3a_branch1",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn3a_branch1",
+            "port": "res3a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 29,
+            "name": "scale3a_branch1",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale3a_branch1",
+            "port": "res3a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 30,
+            "name": "res3a_branch2a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res3a_branch2a",
+            "port": "res3a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 31,
+            "name": "bn3a_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn3a_branch2a",
+            "port": "res3a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 32,
+            "name": "scale3a_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale3a_branch2a",
+            "port": "res3a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 33,
+            "name": "res3a_branch2a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res3a_branch2a_relu",
+            "port": "res3a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 34,
+            "name": "res3a_branch2b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res3a_branch2b",
+            "port": "res3a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 35,
+            "name": "bn3a_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn3a_branch2b",
+            "port": "res3a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 36,
+            "name": "scale3a_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale3a_branch2b",
+            "port": "res3a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 37,
+            "name": "res3a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res3a",
+            "port": "res3a"
+        }
+    },
+    {
+        "IR": {
+            "id": 38,
+            "name": "res3a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res3a_relu",
+            "port": "res3a"
+        }
+    },
+    {
+        "IR": {
+            "id": 39,
+            "name": "res3b_branch2a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res3b_branch2a",
+            "port": "res3b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 40,
+            "name": "bn3b_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn3b_branch2a",
+            "port": "res3b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 41,
+            "name": "scale3b_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale3b_branch2a",
+            "port": "res3b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 42,
+            "name": "res3b_branch2a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res3b_branch2a_relu",
+            "port": "res3b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 43,
+            "name": "res3b_branch2b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res3b_branch2b",
+            "port": "res3b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 44,
+            "name": "bn3b_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn3b_branch2b",
+            "port": "res3b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 45,
+            "name": "scale3b_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale3b_branch2b",
+            "port": "res3b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 46,
+            "name": "res3b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res3b",
+            "port": "res3b"
+        }
+    },
+    {
+        "IR": {
+            "id": 47,
+            "name": "res3b_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res3b_relu",
+            "port": "res3b"
+        }
+    },
+    {
+        "IR": {
+            "id": 48,
+            "name": "res4a_branch1",
+            "port": 2
+        },
+        "framework": {
+            "name": "res4a_branch1",
+            "port": "res4a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 49,
+            "name": "bn4a_branch1",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn4a_branch1",
+            "port": "res4a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 50,
+            "name": "scale4a_branch1",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale4a_branch1",
+            "port": "res4a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 51,
+            "name": "res4a_branch2a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res4a_branch2a",
+            "port": "res4a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 52,
+            "name": "bn4a_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn4a_branch2a",
+            "port": "res4a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 53,
+            "name": "scale4a_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale4a_branch2a",
+            "port": "res4a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 54,
+            "name": "res4a_branch2a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res4a_branch2a_relu",
+            "port": "res4a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 55,
+            "name": "res4a_branch2b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res4a_branch2b",
+            "port": "res4a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 56,
+            "name": "bn4a_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn4a_branch2b",
+            "port": "res4a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 57,
+            "name": "scale4a_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale4a_branch2b",
+            "port": "res4a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 58,
+            "name": "res4a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res4a",
+            "port": "res4a"
+        }
+    },
+    {
+        "IR": {
+            "id": 59,
+            "name": "res4a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res4a_relu",
+            "port": "res4a"
+        }
+    },
+    {
+        "IR": {
+            "id": 60,
+            "name": "res4b_branch2a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res4b_branch2a",
+            "port": "res4b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 61,
+            "name": "bn4b_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn4b_branch2a",
+            "port": "res4b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 62,
+            "name": "scale4b_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale4b_branch2a",
+            "port": "res4b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 63,
+            "name": "res4b_branch2a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res4b_branch2a_relu",
+            "port": "res4b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 64,
+            "name": "res4b_branch2b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res4b_branch2b",
+            "port": "res4b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 65,
+            "name": "bn4b_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn4b_branch2b",
+            "port": "res4b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 66,
+            "name": "scale4b_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale4b_branch2b",
+            "port": "res4b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 67,
+            "name": "res4b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res4b",
+            "port": "res4b"
+        }
+    },
+    {
+        "IR": {
+            "id": 68,
+            "name": "res4b_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res4b_relu",
+            "port": "res4b"
+        }
+    },
+    {
+        "IR": {
+            "id": 69,
+            "name": "res5a_branch1",
+            "port": 2
+        },
+        "framework": {
+            "name": "res5a_branch1",
+            "port": "res5a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 70,
+            "name": "bn5a_branch1",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn5a_branch1",
+            "port": "res5a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 71,
+            "name": "scale5a_branch1",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale5a_branch1",
+            "port": "res5a_branch1"
+        }
+    },
+    {
+        "IR": {
+            "id": 72,
+            "name": "res5a_branch2a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res5a_branch2a",
+            "port": "res5a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 73,
+            "name": "bn5a_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn5a_branch2a",
+            "port": "res5a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 74,
+            "name": "scale5a_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale5a_branch2a",
+            "port": "res5a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 75,
+            "name": "res5a_branch2a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res5a_branch2a_relu",
+            "port": "res5a_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 76,
+            "name": "res5a_branch2b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res5a_branch2b",
+            "port": "res5a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 77,
+            "name": "bn5a_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn5a_branch2b",
+            "port": "res5a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 78,
+            "name": "scale5a_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale5a_branch2b",
+            "port": "res5a_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 79,
+            "name": "res5a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res5a",
+            "port": "res5a"
+        }
+    },
+    {
+        "IR": {
+            "id": 80,
+            "name": "res5a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res5a_relu",
+            "port": "res5a"
+        }
+    },
+    {
+        "IR": {
+            "id": 81,
+            "name": "res5b_branch2a",
+            "port": 2
+        },
+        "framework": {
+            "name": "res5b_branch2a",
+            "port": "res5b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 82,
+            "name": "bn5b_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn5b_branch2a",
+            "port": "res5b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 83,
+            "name": "scale5b_branch2a",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale5b_branch2a",
+            "port": "res5b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 84,
+            "name": "res5b_branch2a_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res5b_branch2a_relu",
+            "port": "res5b_branch2a"
+        }
+    },
+    {
+        "IR": {
+            "id": 85,
+            "name": "res5b_branch2b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res5b_branch2b",
+            "port": "res5b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 86,
+            "name": "bn5b_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "bn5b_branch2b",
+            "port": "res5b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 87,
+            "name": "scale5b_branch2b",
+            "port": 3
+        },
+        "framework": {
+            "name": "scale5b_branch2b",
+            "port": "res5b_branch2b"
+        }
+    },
+    {
+        "IR": {
+            "id": 88,
+            "name": "res5b",
+            "port": 2
+        },
+        "framework": {
+            "name": "res5b",
+            "port": "res5b"
+        }
+    },
+    {
+        "IR": {
+            "id": 89,
+            "name": "res5b_relu",
+            "port": 1
+        },
+        "framework": {
+            "name": "res5b_relu",
+            "port": "res5b"
+        }
+    },
+    {
+        "IR": {
+            "id": 90,
+            "name": "pool5",
+            "port": 1
+        },
+        "framework": {
+            "name": "pool5",
+            "port": "pool5"
+        }
+    },
+    {
+        "IR": {
+            "id": 91,
+            "name": "fc1000",
+            "port": 3
+        },
+        "framework": {
+            "name": "fc1000",
+            "port": "fc1000"
+        }
+    },
+    {
+        "IR": {
+            "id": 92,
+            "name": "loss",
+            "port": 1
+        },
+        "framework": {
+            "name": "loss",
+            "port": "loss"
+        }
+    }
+]

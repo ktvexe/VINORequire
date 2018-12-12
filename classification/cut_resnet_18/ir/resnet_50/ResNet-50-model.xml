@@ -1,0 +1,5218 @@
+<?xml version="1.0" ?>
+<net batch="1" name="model" version="2">
+	<layers>
+		<layer id="0" name="data" precision="FP32" type="Input">
+			<output>
+				<port id="0">
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>224</dim>
+					<dim>224</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="1" name="conv1" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="7" kernel-y="7" output="64" pad-x="3" pad-y="3" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>224</dim>
+					<dim>224</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="0" size="37632"/>
+				<biases offset="37632" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="2" name="bn_conv1" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="37888" size="256"/>
+				<weights offset="38144" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="3" name="scale_conv1" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="38400" size="256"/>
+				<biases offset="38656" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="4" name="conv1_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="5" name="pool1" precision="FP32" type="Pooling">
+			<data exclude-pad="false" kernel-x="3" kernel-y="3" pad-x="0" pad-y="0" pool-method="max" rounding_type="ceil" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="6" name="res2a_branch1" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="38912" size="65536"/>
+			</blobs>
+		</layer>
+		<layer id="7" name="bn2a_branch1" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="104448" size="1024"/>
+				<weights offset="105472" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="8" name="scale2a_branch1" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="106496" size="1024"/>
+				<biases offset="107520" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="9" name="res2a_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="64" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="108544" size="16384"/>
+			</blobs>
+		</layer>
+		<layer id="10" name="bn2a_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="124928" size="256"/>
+				<weights offset="125184" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="11" name="scale2a_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="125440" size="256"/>
+				<biases offset="125696" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="12" name="res2a_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="13" name="res2a_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="64" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="125952" size="147456"/>
+			</blobs>
+		</layer>
+		<layer id="14" name="bn2a_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="273408" size="256"/>
+				<weights offset="273664" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="15" name="scale2a_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="273920" size="256"/>
+				<biases offset="274176" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="16" name="res2a_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="17" name="res2a_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="274432" size="65536"/>
+			</blobs>
+		</layer>
+		<layer id="18" name="bn2a_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="339968" size="1024"/>
+				<weights offset="340992" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="19" name="scale2a_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="342016" size="1024"/>
+				<biases offset="343040" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="20" name="res2a" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="21" name="res2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="22" name="res2b_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="64" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="344064" size="65536"/>
+			</blobs>
+		</layer>
+		<layer id="23" name="bn2b_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="409600" size="256"/>
+				<weights offset="409856" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="24" name="scale2b_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="410112" size="256"/>
+				<biases offset="410368" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="25" name="res2b_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="26" name="res2b_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="64" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="410624" size="147456"/>
+			</blobs>
+		</layer>
+		<layer id="27" name="bn2b_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="558080" size="256"/>
+				<weights offset="558336" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="28" name="scale2b_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="558592" size="256"/>
+				<biases offset="558848" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="29" name="res2b_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="30" name="res2b_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="559104" size="65536"/>
+			</blobs>
+		</layer>
+		<layer id="31" name="bn2b_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="624640" size="1024"/>
+				<weights offset="625664" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="32" name="scale2b_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="626688" size="1024"/>
+				<biases offset="627712" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="33" name="res2b" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="34" name="res2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="35" name="res2c_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="64" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="628736" size="65536"/>
+			</blobs>
+		</layer>
+		<layer id="36" name="bn2c_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="694272" size="256"/>
+				<weights offset="694528" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="37" name="scale2c_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="694784" size="256"/>
+				<biases offset="695040" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="38" name="res2c_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="39" name="res2c_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="64" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="695296" size="147456"/>
+			</blobs>
+		</layer>
+		<layer id="40" name="bn2c_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="842752" size="256"/>
+				<weights offset="843008" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="41" name="scale2c_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="843264" size="256"/>
+				<biases offset="843520" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="42" name="res2c_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="43" name="res2c_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="843776" size="65536"/>
+			</blobs>
+		</layer>
+		<layer id="44" name="bn2c_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="909312" size="1024"/>
+				<weights offset="910336" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="45" name="scale2c_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="911360" size="1024"/>
+				<biases offset="912384" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="46" name="res2c" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="47" name="res2c_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="48" name="res3a_branch1" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="512" pad-x="0" pad-y="0" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="913408" size="524288"/>
+			</blobs>
+		</layer>
+		<layer id="49" name="bn3a_branch1" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="1437696" size="2048"/>
+				<weights offset="1439744" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="50" name="scale3a_branch1" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="1441792" size="2048"/>
+				<biases offset="1443840" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="51" name="res3a_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="128" pad-x="0" pad-y="0" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>56</dim>
+					<dim>56</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="1445888" size="131072"/>
+			</blobs>
+		</layer>
+		<layer id="52" name="bn3a_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="1576960" size="512"/>
+				<weights offset="1577472" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="53" name="scale3a_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="1577984" size="512"/>
+				<biases offset="1578496" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="54" name="res3a_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="55" name="res3a_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="128" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="1579008" size="589824"/>
+			</blobs>
+		</layer>
+		<layer id="56" name="bn3a_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="2168832" size="512"/>
+				<weights offset="2169344" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="57" name="scale3a_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2169856" size="512"/>
+				<biases offset="2170368" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="58" name="res3a_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="59" name="res3a_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="512" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2170880" size="262144"/>
+			</blobs>
+		</layer>
+		<layer id="60" name="bn3a_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="2433024" size="2048"/>
+				<weights offset="2435072" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="61" name="scale3a_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2437120" size="2048"/>
+				<biases offset="2439168" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="62" name="res3a" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="63" name="res3a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="64" name="res3b_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="128" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2441216" size="262144"/>
+			</blobs>
+		</layer>
+		<layer id="65" name="bn3b_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="2703360" size="512"/>
+				<weights offset="2703872" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="66" name="scale3b_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2704384" size="512"/>
+				<biases offset="2704896" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="67" name="res3b_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="68" name="res3b_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="128" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2705408" size="589824"/>
+			</blobs>
+		</layer>
+		<layer id="69" name="bn3b_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="3295232" size="512"/>
+				<weights offset="3295744" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="70" name="scale3b_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="3296256" size="512"/>
+				<biases offset="3296768" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="71" name="res3b_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="72" name="res3b_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="512" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="3297280" size="262144"/>
+			</blobs>
+		</layer>
+		<layer id="73" name="bn3b_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="3559424" size="2048"/>
+				<weights offset="3561472" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="74" name="scale3b_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="3563520" size="2048"/>
+				<biases offset="3565568" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="75" name="res3b" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="76" name="res3b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="77" name="res3c_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="128" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="3567616" size="262144"/>
+			</blobs>
+		</layer>
+		<layer id="78" name="bn3c_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="3829760" size="512"/>
+				<weights offset="3830272" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="79" name="scale3c_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="3830784" size="512"/>
+				<biases offset="3831296" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="80" name="res3c_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="81" name="res3c_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="128" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="3831808" size="589824"/>
+			</blobs>
+		</layer>
+		<layer id="82" name="bn3c_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="4421632" size="512"/>
+				<weights offset="4422144" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="83" name="scale3c_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="4422656" size="512"/>
+				<biases offset="4423168" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="84" name="res3c_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="85" name="res3c_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="512" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="4423680" size="262144"/>
+			</blobs>
+		</layer>
+		<layer id="86" name="bn3c_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="4685824" size="2048"/>
+				<weights offset="4687872" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="87" name="scale3c_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="4689920" size="2048"/>
+				<biases offset="4691968" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="88" name="res3c" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="89" name="res3c_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="90" name="res3d_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="128" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="4694016" size="262144"/>
+			</blobs>
+		</layer>
+		<layer id="91" name="bn3d_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="4956160" size="512"/>
+				<weights offset="4956672" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="92" name="scale3d_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="4957184" size="512"/>
+				<biases offset="4957696" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="93" name="res3d_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="94" name="res3d_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="128" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="4958208" size="589824"/>
+			</blobs>
+		</layer>
+		<layer id="95" name="bn3d_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="5548032" size="512"/>
+				<weights offset="5548544" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="96" name="scale3d_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="5549056" size="512"/>
+				<biases offset="5549568" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="97" name="res3d_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="98" name="res3d_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="512" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="5550080" size="262144"/>
+			</blobs>
+		</layer>
+		<layer id="99" name="bn3d_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="5812224" size="2048"/>
+				<weights offset="5814272" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="100" name="scale3d_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="5816320" size="2048"/>
+				<biases offset="5818368" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="101" name="res3d" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="102" name="res3d_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="103" name="res4a_branch1" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="1024" pad-x="0" pad-y="0" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="5820416" size="2097152"/>
+			</blobs>
+		</layer>
+		<layer id="104" name="bn4a_branch1" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="7917568" size="4096"/>
+				<weights offset="7921664" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="105" name="scale4a_branch1" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="7925760" size="4096"/>
+				<biases offset="7929856" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="106" name="res4a_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>28</dim>
+					<dim>28</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="7933952" size="524288"/>
+			</blobs>
+		</layer>
+		<layer id="107" name="bn4a_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="8458240" size="1024"/>
+				<weights offset="8459264" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="108" name="scale4a_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="8460288" size="1024"/>
+				<biases offset="8461312" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="109" name="res4a_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="110" name="res4a_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="8462336" size="2359296"/>
+			</blobs>
+		</layer>
+		<layer id="111" name="bn4a_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="10821632" size="1024"/>
+				<weights offset="10822656" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="112" name="scale4a_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="10823680" size="1024"/>
+				<biases offset="10824704" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="113" name="res4a_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="114" name="res4a_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="1024" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="10825728" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="115" name="bn4a_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="11874304" size="4096"/>
+				<weights offset="11878400" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="116" name="scale4a_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="11882496" size="4096"/>
+				<biases offset="11886592" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="117" name="res4a" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="118" name="res4a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="119" name="res4b_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="11890688" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="120" name="bn4b_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="12939264" size="1024"/>
+				<weights offset="12940288" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="121" name="scale4b_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="12941312" size="1024"/>
+				<biases offset="12942336" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="122" name="res4b_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="123" name="res4b_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="12943360" size="2359296"/>
+			</blobs>
+		</layer>
+		<layer id="124" name="bn4b_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="15302656" size="1024"/>
+				<weights offset="15303680" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="125" name="scale4b_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="15304704" size="1024"/>
+				<biases offset="15305728" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="126" name="res4b_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="127" name="res4b_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="1024" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="15306752" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="128" name="bn4b_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="16355328" size="4096"/>
+				<weights offset="16359424" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="129" name="scale4b_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="16363520" size="4096"/>
+				<biases offset="16367616" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="130" name="res4b" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="131" name="res4b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="132" name="res4c_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="16371712" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="133" name="bn4c_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="17420288" size="1024"/>
+				<weights offset="17421312" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="134" name="scale4c_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="17422336" size="1024"/>
+				<biases offset="17423360" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="135" name="res4c_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="136" name="res4c_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="17424384" size="2359296"/>
+			</blobs>
+		</layer>
+		<layer id="137" name="bn4c_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="19783680" size="1024"/>
+				<weights offset="19784704" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="138" name="scale4c_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="19785728" size="1024"/>
+				<biases offset="19786752" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="139" name="res4c_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="140" name="res4c_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="1024" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="19787776" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="141" name="bn4c_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="20836352" size="4096"/>
+				<weights offset="20840448" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="142" name="scale4c_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="20844544" size="4096"/>
+				<biases offset="20848640" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="143" name="res4c" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="144" name="res4c_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="145" name="res4d_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="20852736" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="146" name="bn4d_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="21901312" size="1024"/>
+				<weights offset="21902336" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="147" name="scale4d_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="21903360" size="1024"/>
+				<biases offset="21904384" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="148" name="res4d_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="149" name="res4d_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="21905408" size="2359296"/>
+			</blobs>
+		</layer>
+		<layer id="150" name="bn4d_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="24264704" size="1024"/>
+				<weights offset="24265728" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="151" name="scale4d_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="24266752" size="1024"/>
+				<biases offset="24267776" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="152" name="res4d_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="153" name="res4d_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="1024" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="24268800" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="154" name="bn4d_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="25317376" size="4096"/>
+				<weights offset="25321472" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="155" name="scale4d_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="25325568" size="4096"/>
+				<biases offset="25329664" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="156" name="res4d" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="157" name="res4d_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="158" name="res4e_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="25333760" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="159" name="bn4e_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="26382336" size="1024"/>
+				<weights offset="26383360" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="160" name="scale4e_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="26384384" size="1024"/>
+				<biases offset="26385408" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="161" name="res4e_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="162" name="res4e_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="26386432" size="2359296"/>
+			</blobs>
+		</layer>
+		<layer id="163" name="bn4e_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="28745728" size="1024"/>
+				<weights offset="28746752" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="164" name="scale4e_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="28747776" size="1024"/>
+				<biases offset="28748800" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="165" name="res4e_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="166" name="res4e_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="1024" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="28749824" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="167" name="bn4e_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="29798400" size="4096"/>
+				<weights offset="29802496" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="168" name="scale4e_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="29806592" size="4096"/>
+				<biases offset="29810688" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="169" name="res4e" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="170" name="res4e_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="171" name="res4f_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="29814784" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="172" name="bn4f_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="30863360" size="1024"/>
+				<weights offset="30864384" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="173" name="scale4f_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="30865408" size="1024"/>
+				<biases offset="30866432" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="174" name="res4f_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="175" name="res4f_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="30867456" size="2359296"/>
+			</blobs>
+		</layer>
+		<layer id="176" name="bn4f_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="33226752" size="1024"/>
+				<weights offset="33227776" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="177" name="scale4f_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="33228800" size="1024"/>
+				<biases offset="33229824" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="178" name="res4f_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="179" name="res4f_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="1024" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="33230848" size="1048576"/>
+			</blobs>
+		</layer>
+		<layer id="180" name="bn4f_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="34279424" size="4096"/>
+				<weights offset="34283520" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="181" name="scale4f_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="34287616" size="4096"/>
+				<biases offset="34291712" size="4096"/>
+			</blobs>
+		</layer>
+		<layer id="182" name="res4f" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="183" name="res4f_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="184" name="res5a_branch1" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="2048" pad-x="0" pad-y="0" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="34295808" size="8388608"/>
+			</blobs>
+		</layer>
+		<layer id="185" name="bn5a_branch1" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="42684416" size="8192"/>
+				<weights offset="42692608" size="8192"/>
+			</blobs>
+		</layer>
+		<layer id="186" name="scale5a_branch1" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="42700800" size="8192"/>
+				<biases offset="42708992" size="8192"/>
+			</blobs>
+		</layer>
+		<layer id="187" name="res5a_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="512" pad-x="0" pad-y="0" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1024</dim>
+					<dim>14</dim>
+					<dim>14</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="42717184" size="2097152"/>
+			</blobs>
+		</layer>
+		<layer id="188" name="bn5a_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="44814336" size="2048"/>
+				<weights offset="44816384" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="189" name="scale5a_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="44818432" size="2048"/>
+				<biases offset="44820480" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="190" name="res5a_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="191" name="res5a_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="512" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="44822528" size="9437184"/>
+			</blobs>
+		</layer>
+		<layer id="192" name="bn5a_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="54259712" size="2048"/>
+				<weights offset="54261760" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="193" name="scale5a_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="54263808" size="2048"/>
+				<biases offset="54265856" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="194" name="res5a_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="195" name="res5a_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="2048" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="54267904" size="4194304"/>
+			</blobs>
+		</layer>
+		<layer id="196" name="bn5a_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="58462208" size="8192"/>
+				<weights offset="58470400" size="8192"/>
+			</blobs>
+		</layer>
+		<layer id="197" name="scale5a_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="58478592" size="8192"/>
+				<biases offset="58486784" size="8192"/>
+			</blobs>
+		</layer>
+		<layer id="198" name="res5a" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="199" name="res5a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="200" name="res5b_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="512" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="58494976" size="4194304"/>
+			</blobs>
+		</layer>
+		<layer id="201" name="bn5b_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="62689280" size="2048"/>
+				<weights offset="62691328" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="202" name="scale5b_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="62693376" size="2048"/>
+				<biases offset="62695424" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="203" name="res5b_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="204" name="res5b_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="512" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="62697472" size="9437184"/>
+			</blobs>
+		</layer>
+		<layer id="205" name="bn5b_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="72134656" size="2048"/>
+				<weights offset="72136704" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="206" name="scale5b_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="72138752" size="2048"/>
+				<biases offset="72140800" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="207" name="res5b_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="208" name="res5b_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="2048" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="72142848" size="4194304"/>
+			</blobs>
+		</layer>
+		<layer id="209" name="bn5b_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="76337152" size="8192"/>
+				<weights offset="76345344" size="8192"/>
+			</blobs>
+		</layer>
+		<layer id="210" name="scale5b_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="76353536" size="8192"/>
+				<biases offset="76361728" size="8192"/>
+			</blobs>
+		</layer>
+		<layer id="211" name="res5b" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="212" name="res5b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="213" name="res5c_branch2a" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="512" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="76369920" size="4194304"/>
+			</blobs>
+		</layer>
+		<layer id="214" name="bn5c_branch2a" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="80564224" size="2048"/>
+				<weights offset="80566272" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="215" name="scale5c_branch2a" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="80568320" size="2048"/>
+				<biases offset="80570368" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="216" name="res5c_branch2a_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="217" name="res5c_branch2b" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="512" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="80572416" size="9437184"/>
+			</blobs>
+		</layer>
+		<layer id="218" name="bn5c_branch2b" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="90009600" size="2048"/>
+				<weights offset="90011648" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="219" name="scale5c_branch2b" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="90013696" size="2048"/>
+				<biases offset="90015744" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="220" name="res5c_branch2b_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="221" name="res5c_branch2c" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="2048" pad-x="0" pad-y="0" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="90017792" size="4194304"/>
+			</blobs>
+		</layer>
+		<layer id="222" name="bn5c_branch2c" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="94212096" size="8192"/>
+				<weights offset="94220288" size="8192"/>
+			</blobs>
+		</layer>
+		<layer id="223" name="scale5c_branch2c" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="94228480" size="8192"/>
+				<biases offset="94236672" size="8192"/>
+			</blobs>
+		</layer>
+		<layer id="224" name="res5c" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="225" name="res5c_relu" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="226" name="pool5" precision="FP32" type="Pooling">
+			<data exclude-pad="false" kernel-x="7" kernel-y="7" pad-x="0" pad-y="0" pool-method="avg" rounding_type="ceil" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>7</dim>
+					<dim>7</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="227" name="fc1000" precision="FP32" type="FullyConnected">
+			<data out-size="1000"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>2048</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>1000</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="94244864" size="8192000"/>
+				<biases offset="102436864" size="4000"/>
+			</blobs>
+		</layer>
+		<layer id="228" name="prob" precision="FP32" type="SoftMax">
+			<data axis="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>1000</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>1000</dim>
+				</port>
+			</output>
+		</layer>
+	</layers>
+	<edges>
+		<edge from-layer="0" from-port="0" to-layer="1" to-port="0"/>
+		<edge from-layer="1" from-port="3" to-layer="2" to-port="0"/>
+		<edge from-layer="2" from-port="3" to-layer="3" to-port="0"/>
+		<edge from-layer="3" from-port="3" to-layer="4" to-port="0"/>
+		<edge from-layer="4" from-port="1" to-layer="5" to-port="0"/>
+		<edge from-layer="5" from-port="1" to-layer="6" to-port="0"/>
+		<edge from-layer="6" from-port="2" to-layer="7" to-port="0"/>
+		<edge from-layer="7" from-port="3" to-layer="8" to-port="0"/>
+		<edge from-layer="5" from-port="1" to-layer="9" to-port="0"/>
+		<edge from-layer="9" from-port="2" to-layer="10" to-port="0"/>
+		<edge from-layer="10" from-port="3" to-layer="11" to-port="0"/>
+		<edge from-layer="11" from-port="3" to-layer="12" to-port="0"/>
+		<edge from-layer="12" from-port="1" to-layer="13" to-port="0"/>
+		<edge from-layer="13" from-port="2" to-layer="14" to-port="0"/>
+		<edge from-layer="14" from-port="3" to-layer="15" to-port="0"/>
+		<edge from-layer="15" from-port="3" to-layer="16" to-port="0"/>
+		<edge from-layer="16" from-port="1" to-layer="17" to-port="0"/>
+		<edge from-layer="17" from-port="2" to-layer="18" to-port="0"/>
+		<edge from-layer="18" from-port="3" to-layer="19" to-port="0"/>
+		<edge from-layer="8" from-port="3" to-layer="20" to-port="0"/>
+		<edge from-layer="19" from-port="3" to-layer="20" to-port="1"/>
+		<edge from-layer="20" from-port="2" to-layer="21" to-port="0"/>
+		<edge from-layer="21" from-port="1" to-layer="22" to-port="0"/>
+		<edge from-layer="22" from-port="2" to-layer="23" to-port="0"/>
+		<edge from-layer="23" from-port="3" to-layer="24" to-port="0"/>
+		<edge from-layer="24" from-port="3" to-layer="25" to-port="0"/>
+		<edge from-layer="25" from-port="1" to-layer="26" to-port="0"/>
+		<edge from-layer="26" from-port="2" to-layer="27" to-port="0"/>
+		<edge from-layer="27" from-port="3" to-layer="28" to-port="0"/>
+		<edge from-layer="28" from-port="3" to-layer="29" to-port="0"/>
+		<edge from-layer="29" from-port="1" to-layer="30" to-port="0"/>
+		<edge from-layer="30" from-port="2" to-layer="31" to-port="0"/>
+		<edge from-layer="31" from-port="3" to-layer="32" to-port="0"/>
+		<edge from-layer="21" from-port="1" to-layer="33" to-port="0"/>
+		<edge from-layer="32" from-port="3" to-layer="33" to-port="1"/>
+		<edge from-layer="33" from-port="2" to-layer="34" to-port="0"/>
+		<edge from-layer="34" from-port="1" to-layer="35" to-port="0"/>
+		<edge from-layer="35" from-port="2" to-layer="36" to-port="0"/>
+		<edge from-layer="36" from-port="3" to-layer="37" to-port="0"/>
+		<edge from-layer="37" from-port="3" to-layer="38" to-port="0"/>
+		<edge from-layer="38" from-port="1" to-layer="39" to-port="0"/>
+		<edge from-layer="39" from-port="2" to-layer="40" to-port="0"/>
+		<edge from-layer="40" from-port="3" to-layer="41" to-port="0"/>
+		<edge from-layer="41" from-port="3" to-layer="42" to-port="0"/>
+		<edge from-layer="42" from-port="1" to-layer="43" to-port="0"/>
+		<edge from-layer="43" from-port="2" to-layer="44" to-port="0"/>
+		<edge from-layer="44" from-port="3" to-layer="45" to-port="0"/>
+		<edge from-layer="34" from-port="1" to-layer="46" to-port="0"/>
+		<edge from-layer="45" from-port="3" to-layer="46" to-port="1"/>
+		<edge from-layer="46" from-port="2" to-layer="47" to-port="0"/>
+		<edge from-layer="47" from-port="1" to-layer="48" to-port="0"/>
+		<edge from-layer="48" from-port="2" to-layer="49" to-port="0"/>
+		<edge from-layer="49" from-port="3" to-layer="50" to-port="0"/>
+		<edge from-layer="47" from-port="1" to-layer="51" to-port="0"/>
+		<edge from-layer="51" from-port="2" to-layer="52" to-port="0"/>
+		<edge from-layer="52" from-port="3" to-layer="53" to-port="0"/>
+		<edge from-layer="53" from-port="3" to-layer="54" to-port="0"/>
+		<edge from-layer="54" from-port="1" to-layer="55" to-port="0"/>
+		<edge from-layer="55" from-port="2" to-layer="56" to-port="0"/>
+		<edge from-layer="56" from-port="3" to-layer="57" to-port="0"/>
+		<edge from-layer="57" from-port="3" to-layer="58" to-port="0"/>
+		<edge from-layer="58" from-port="1" to-layer="59" to-port="0"/>
+		<edge from-layer="59" from-port="2" to-layer="60" to-port="0"/>
+		<edge from-layer="60" from-port="3" to-layer="61" to-port="0"/>
+		<edge from-layer="50" from-port="3" to-layer="62" to-port="0"/>
+		<edge from-layer="61" from-port="3" to-layer="62" to-port="1"/>
+		<edge from-layer="62" from-port="2" to-layer="63" to-port="0"/>
+		<edge from-layer="63" from-port="1" to-layer="64" to-port="0"/>
+		<edge from-layer="64" from-port="2" to-layer="65" to-port="0"/>
+		<edge from-layer="65" from-port="3" to-layer="66" to-port="0"/>
+		<edge from-layer="66" from-port="3" to-layer="67" to-port="0"/>
+		<edge from-layer="67" from-port="1" to-layer="68" to-port="0"/>
+		<edge from-layer="68" from-port="2" to-layer="69" to-port="0"/>
+		<edge from-layer="69" from-port="3" to-layer="70" to-port="0"/>
+		<edge from-layer="70" from-port="3" to-layer="71" to-port="0"/>
+		<edge from-layer="71" from-port="1" to-layer="72" to-port="0"/>
+		<edge from-layer="72" from-port="2" to-layer="73" to-port="0"/>
+		<edge from-layer="73" from-port="3" to-layer="74" to-port="0"/>
+		<edge from-layer="63" from-port="1" to-layer="75" to-port="0"/>
+		<edge from-layer="74" from-port="3" to-layer="75" to-port="1"/>
+		<edge from-layer="75" from-port="2" to-layer="76" to-port="0"/>
+		<edge from-layer="76" from-port="1" to-layer="77" to-port="0"/>
+		<edge from-layer="77" from-port="2" to-layer="78" to-port="0"/>
+		<edge from-layer="78" from-port="3" to-layer="79" to-port="0"/>
+		<edge from-layer="79" from-port="3" to-layer="80" to-port="0"/>
+		<edge from-layer="80" from-port="1" to-layer="81" to-port="0"/>
+		<edge from-layer="81" from-port="2" to-layer="82" to-port="0"/>
+		<edge from-layer="82" from-port="3" to-layer="83" to-port="0"/>
+		<edge from-layer="83" from-port="3" to-layer="84" to-port="0"/>
+		<edge from-layer="84" from-port="1" to-layer="85" to-port="0"/>
+		<edge from-layer="85" from-port="2" to-layer="86" to-port="0"/>
+		<edge from-layer="86" from-port="3" to-layer="87" to-port="0"/>
+		<edge from-layer="76" from-port="1" to-layer="88" to-port="0"/>
+		<edge from-layer="87" from-port="3" to-layer="88" to-port="1"/>
+		<edge from-layer="88" from-port="2" to-layer="89" to-port="0"/>
+		<edge from-layer="89" from-port="1" to-layer="90" to-port="0"/>
+		<edge from-layer="90" from-port="2" to-layer="91" to-port="0"/>
+		<edge from-layer="91" from-port="3" to-layer="92" to-port="0"/>
+		<edge from-layer="92" from-port="3" to-layer="93" to-port="0"/>
+		<edge from-layer="93" from-port="1" to-layer="94" to-port="0"/>
+		<edge from-layer="94" from-port="2" to-layer="95" to-port="0"/>
+		<edge from-layer="95" from-port="3" to-layer="96" to-port="0"/>
+		<edge from-layer="96" from-port="3" to-layer="97" to-port="0"/>
+		<edge from-layer="97" from-port="1" to-layer="98" to-port="0"/>
+		<edge from-layer="98" from-port="2" to-layer="99" to-port="0"/>
+		<edge from-layer="99" from-port="3" to-layer="100" to-port="0"/>
+		<edge from-layer="89" from-port="1" to-layer="101" to-port="0"/>
+		<edge from-layer="100" from-port="3" to-layer="101" to-port="1"/>
+		<edge from-layer="101" from-port="2" to-layer="102" to-port="0"/>
+		<edge from-layer="102" from-port="1" to-layer="103" to-port="0"/>
+		<edge from-layer="103" from-port="2" to-layer="104" to-port="0"/>
+		<edge from-layer="104" from-port="3" to-layer="105" to-port="0"/>
+		<edge from-layer="102" from-port="1" to-layer="106" to-port="0"/>
+		<edge from-layer="106" from-port="2" to-layer="107" to-port="0"/>
+		<edge from-layer="107" from-port="3" to-layer="108" to-port="0"/>
+		<edge from-layer="108" from-port="3" to-layer="109" to-port="0"/>
+		<edge from-layer="109" from-port="1" to-layer="110" to-port="0"/>
+		<edge from-layer="110" from-port="2" to-layer="111" to-port="0"/>
+		<edge from-layer="111" from-port="3" to-layer="112" to-port="0"/>
+		<edge from-layer="112" from-port="3" to-layer="113" to-port="0"/>
+		<edge from-layer="113" from-port="1" to-layer="114" to-port="0"/>
+		<edge from-layer="114" from-port="2" to-layer="115" to-port="0"/>
+		<edge from-layer="115" from-port="3" to-layer="116" to-port="0"/>
+		<edge from-layer="105" from-port="3" to-layer="117" to-port="0"/>
+		<edge from-layer="116" from-port="3" to-layer="117" to-port="1"/>
+		<edge from-layer="117" from-port="2" to-layer="118" to-port="0"/>
+		<edge from-layer="118" from-port="1" to-layer="119" to-port="0"/>
+		<edge from-layer="119" from-port="2" to-layer="120" to-port="0"/>
+		<edge from-layer="120" from-port="3" to-layer="121" to-port="0"/>
+		<edge from-layer="121" from-port="3" to-layer="122" to-port="0"/>
+		<edge from-layer="122" from-port="1" to-layer="123" to-port="0"/>
+		<edge from-layer="123" from-port="2" to-layer="124" to-port="0"/>
+		<edge from-layer="124" from-port="3" to-layer="125" to-port="0"/>
+		<edge from-layer="125" from-port="3" to-layer="126" to-port="0"/>
+		<edge from-layer="126" from-port="1" to-layer="127" to-port="0"/>
+		<edge from-layer="127" from-port="2" to-layer="128" to-port="0"/>
+		<edge from-layer="128" from-port="3" to-layer="129" to-port="0"/>
+		<edge from-layer="118" from-port="1" to-layer="130" to-port="0"/>
+		<edge from-layer="129" from-port="3" to-layer="130" to-port="1"/>
+		<edge from-layer="130" from-port="2" to-layer="131" to-port="0"/>
+		<edge from-layer="131" from-port="1" to-layer="132" to-port="0"/>
+		<edge from-layer="132" from-port="2" to-layer="133" to-port="0"/>
+		<edge from-layer="133" from-port="3" to-layer="134" to-port="0"/>
+		<edge from-layer="134" from-port="3" to-layer="135" to-port="0"/>
+		<edge from-layer="135" from-port="1" to-layer="136" to-port="0"/>
+		<edge from-layer="136" from-port="2" to-layer="137" to-port="0"/>
+		<edge from-layer="137" from-port="3" to-layer="138" to-port="0"/>
+		<edge from-layer="138" from-port="3" to-layer="139" to-port="0"/>
+		<edge from-layer="139" from-port="1" to-layer="140" to-port="0"/>
+		<edge from-layer="140" from-port="2" to-layer="141" to-port="0"/>
+		<edge from-layer="141" from-port="3" to-layer="142" to-port="0"/>
+		<edge from-layer="131" from-port="1" to-layer="143" to-port="0"/>
+		<edge from-layer="142" from-port="3" to-layer="143" to-port="1"/>
+		<edge from-layer="143" from-port="2" to-layer="144" to-port="0"/>
+		<edge from-layer="144" from-port="1" to-layer="145" to-port="0"/>
+		<edge from-layer="145" from-port="2" to-layer="146" to-port="0"/>
+		<edge from-layer="146" from-port="3" to-layer="147" to-port="0"/>
+		<edge from-layer="147" from-port="3" to-layer="148" to-port="0"/>
+		<edge from-layer="148" from-port="1" to-layer="149" to-port="0"/>
+		<edge from-layer="149" from-port="2" to-layer="150" to-port="0"/>
+		<edge from-layer="150" from-port="3" to-layer="151" to-port="0"/>
+		<edge from-layer="151" from-port="3" to-layer="152" to-port="0"/>
+		<edge from-layer="152" from-port="1" to-layer="153" to-port="0"/>
+		<edge from-layer="153" from-port="2" to-layer="154" to-port="0"/>
+		<edge from-layer="154" from-port="3" to-layer="155" to-port="0"/>
+		<edge from-layer="144" from-port="1" to-layer="156" to-port="0"/>
+		<edge from-layer="155" from-port="3" to-layer="156" to-port="1"/>
+		<edge from-layer="156" from-port="2" to-layer="157" to-port="0"/>
+		<edge from-layer="157" from-port="1" to-layer="158" to-port="0"/>
+		<edge from-layer="158" from-port="2" to-layer="159" to-port="0"/>
+		<edge from-layer="159" from-port="3" to-layer="160" to-port="0"/>
+		<edge from-layer="160" from-port="3" to-layer="161" to-port="0"/>
+		<edge from-layer="161" from-port="1" to-layer="162" to-port="0"/>
+		<edge from-layer="162" from-port="2" to-layer="163" to-port="0"/>
+		<edge from-layer="163" from-port="3" to-layer="164" to-port="0"/>
+		<edge from-layer="164" from-port="3" to-layer="165" to-port="0"/>
+		<edge from-layer="165" from-port="1" to-layer="166" to-port="0"/>
+		<edge from-layer="166" from-port="2" to-layer="167" to-port="0"/>
+		<edge from-layer="167" from-port="3" to-layer="168" to-port="0"/>
+		<edge from-layer="157" from-port="1" to-layer="169" to-port="0"/>
+		<edge from-layer="168" from-port="3" to-layer="169" to-port="1"/>
+		<edge from-layer="169" from-port="2" to-layer="170" to-port="0"/>
+		<edge from-layer="170" from-port="1" to-layer="171" to-port="0"/>
+		<edge from-layer="171" from-port="2" to-layer="172" to-port="0"/>
+		<edge from-layer="172" from-port="3" to-layer="173" to-port="0"/>
+		<edge from-layer="173" from-port="3" to-layer="174" to-port="0"/>
+		<edge from-layer="174" from-port="1" to-layer="175" to-port="0"/>
+		<edge from-layer="175" from-port="2" to-layer="176" to-port="0"/>
+		<edge from-layer="176" from-port="3" to-layer="177" to-port="0"/>
+		<edge from-layer="177" from-port="3" to-layer="178" to-port="0"/>
+		<edge from-layer="178" from-port="1" to-layer="179" to-port="0"/>
+		<edge from-layer="179" from-port="2" to-layer="180" to-port="0"/>
+		<edge from-layer="180" from-port="3" to-layer="181" to-port="0"/>
+		<edge from-layer="170" from-port="1" to-layer="182" to-port="0"/>
+		<edge from-layer="181" from-port="3" to-layer="182" to-port="1"/>
+		<edge from-layer="182" from-port="2" to-layer="183" to-port="0"/>
+		<edge from-layer="183" from-port="1" to-layer="184" to-port="0"/>
+		<edge from-layer="184" from-port="2" to-layer="185" to-port="0"/>
+		<edge from-layer="185" from-port="3" to-layer="186" to-port="0"/>
+		<edge from-layer="183" from-port="1" to-layer="187" to-port="0"/>
+		<edge from-layer="187" from-port="2" to-layer="188" to-port="0"/>
+		<edge from-layer="188" from-port="3" to-layer="189" to-port="0"/>
+		<edge from-layer="189" from-port="3" to-layer="190" to-port="0"/>
+		<edge from-layer="190" from-port="1" to-layer="191" to-port="0"/>
+		<edge from-layer="191" from-port="2" to-layer="192" to-port="0"/>
+		<edge from-layer="192" from-port="3" to-layer="193" to-port="0"/>
+		<edge from-layer="193" from-port="3" to-layer="194" to-port="0"/>
+		<edge from-layer="194" from-port="1" to-layer="195" to-port="0"/>
+		<edge from-layer="195" from-port="2" to-layer="196" to-port="0"/>
+		<edge from-layer="196" from-port="3" to-layer="197" to-port="0"/>
+		<edge from-layer="186" from-port="3" to-layer="198" to-port="0"/>
+		<edge from-layer="197" from-port="3" to-layer="198" to-port="1"/>
+		<edge from-layer="198" from-port="2" to-layer="199" to-port="0"/>
+		<edge from-layer="199" from-port="1" to-layer="200" to-port="0"/>
+		<edge from-layer="200" from-port="2" to-layer="201" to-port="0"/>
+		<edge from-layer="201" from-port="3" to-layer="202" to-port="0"/>
+		<edge from-layer="202" from-port="3" to-layer="203" to-port="0"/>
+		<edge from-layer="203" from-port="1" to-layer="204" to-port="0"/>
+		<edge from-layer="204" from-port="2" to-layer="205" to-port="0"/>
+		<edge from-layer="205" from-port="3" to-layer="206" to-port="0"/>
+		<edge from-layer="206" from-port="3" to-layer="207" to-port="0"/>
+		<edge from-layer="207" from-port="1" to-layer="208" to-port="0"/>
+		<edge from-layer="208" from-port="2" to-layer="209" to-port="0"/>
+		<edge from-layer="209" from-port="3" to-layer="210" to-port="0"/>
+		<edge from-layer="199" from-port="1" to-layer="211" to-port="0"/>
+		<edge from-layer="210" from-port="3" to-layer="211" to-port="1"/>
+		<edge from-layer="211" from-port="2" to-layer="212" to-port="0"/>
+		<edge from-layer="212" from-port="1" to-layer="213" to-port="0"/>
+		<edge from-layer="213" from-port="2" to-layer="214" to-port="0"/>
+		<edge from-layer="214" from-port="3" to-layer="215" to-port="0"/>
+		<edge from-layer="215" from-port="3" to-layer="216" to-port="0"/>
+		<edge from-layer="216" from-port="1" to-layer="217" to-port="0"/>
+		<edge from-layer="217" from-port="2" to-layer="218" to-port="0"/>
+		<edge from-layer="218" from-port="3" to-layer="219" to-port="0"/>
+		<edge from-layer="219" from-port="3" to-layer="220" to-port="0"/>
+		<edge from-layer="220" from-port="1" to-layer="221" to-port="0"/>
+		<edge from-layer="221" from-port="2" to-layer="222" to-port="0"/>
+		<edge from-layer="222" from-port="3" to-layer="223" to-port="0"/>
+		<edge from-layer="212" from-port="1" to-layer="224" to-port="0"/>
+		<edge from-layer="223" from-port="3" to-layer="224" to-port="1"/>
+		<edge from-layer="224" from-port="2" to-layer="225" to-port="0"/>
+		<edge from-layer="225" from-port="1" to-layer="226" to-port="0"/>
+		<edge from-layer="226" from-port="1" to-layer="227" to-port="0"/>
+		<edge from-layer="227" from-port="3" to-layer="228" to-port="0"/>
+	</edges>
+</net>

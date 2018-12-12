@@ -1,0 +1,970 @@
+[
+    {
+        "IR": {
+            "id": 0,
+            "name": "input",
+            "port": 0
+        },
+        "framework": {
+            "name": "input",
+            "port": "input"
+        }
+    },
+    {
+        "IR": {
+            "id": 1,
+            "name": "ResNetnConv2dnconv1n103",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnConv2dnconv1n103",
+            "port": "ResNetnConv2dnconv1n103"
+        }
+    },
+    {
+        "IR": {
+            "id": 2,
+            "name": "ResNetnBatchNorm2dnbn1n104",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnBatchNorm2dnbn1n104",
+            "port": "ResNetnBatchNorm2dnbn1n104"
+        }
+    },
+    {
+        "IR": {
+            "id": 3,
+            "name": "ResNetnBatchNorm2dnbn1n104_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnBatchNorm2dnbn1n104_scale",
+            "port": "ResNetnBatchNorm2dnbn1n104"
+        }
+    },
+    {
+        "IR": {
+            "id": 4,
+            "name": "ResNetnReLUnrelun105",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnReLUnrelun105",
+            "port": "ResNetnBatchNorm2dnbn1n104"
+        }
+    },
+    {
+        "IR": {
+            "id": 5,
+            "name": "ResNetnMaxPool2dnmaxpooln106",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnMaxPool2dnmaxpooln106",
+            "port": "ResNetnMaxPool2dnmaxpooln106"
+        }
+    },
+    {
+        "IR": {
+            "id": 6,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnConv2dnconv1n107",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnConv2dnconv1n107",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn0nnConv2dnconv1n107"
+        }
+    },
+    {
+        "IR": {
+            "id": 7,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn1n108",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn1n108",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn1n108"
+        }
+    },
+    {
+        "IR": {
+            "id": 8,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn1n108_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn1n108_scale",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn1n108"
+        }
+    },
+    {
+        "IR": {
+            "id": 9,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnReLUnrelun109",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnReLUnrelun109",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn1n108"
+        }
+    },
+    {
+        "IR": {
+            "id": 10,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnConv2dnconv2n110",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnConv2dnconv2n110",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn0nnConv2dnconv2n110"
+        }
+    },
+    {
+        "IR": {
+            "id": 11,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn2n111",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn2n111",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn2n111"
+        }
+    },
+    {
+        "IR": {
+            "id": 12,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn2n111_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn2n111_scale",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn2n111"
+        }
+    },
+    {
+        "IR": {
+            "id": 13,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0n112",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0n112",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn0n112"
+        }
+    },
+    {
+        "IR": {
+            "id": 14,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnReLUnrelun113",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn0nnReLUnrelun113",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn0n112"
+        }
+    },
+    {
+        "IR": {
+            "id": 15,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnConv2dnconv1n114",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnConv2dnconv1n114",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn1nnConv2dnconv1n114"
+        }
+    },
+    {
+        "IR": {
+            "id": 16,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn1n115",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn1n115",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn1n115"
+        }
+    },
+    {
+        "IR": {
+            "id": 17,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn1n115_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn1n115_scale",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn1n115"
+        }
+    },
+    {
+        "IR": {
+            "id": 18,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnReLUnrelun116",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnReLUnrelun116",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn1n115"
+        }
+    },
+    {
+        "IR": {
+            "id": 19,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnConv2dnconv2n117",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnConv2dnconv2n117",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn1nnConv2dnconv2n117"
+        }
+    },
+    {
+        "IR": {
+            "id": 20,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn2n118",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn2n118",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn2n118"
+        }
+    },
+    {
+        "IR": {
+            "id": 21,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn2n118_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn2n118_scale",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn2n118"
+        }
+    },
+    {
+        "IR": {
+            "id": 22,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1n119",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1n119",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn1n119"
+        }
+    },
+    {
+        "IR": {
+            "id": 23,
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnReLUnrelun120",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer1nnBasicBlockn1nnReLUnrelun120",
+            "port": "ResNetnSequentialnlayer1nnBasicBlockn1n119"
+        }
+    },
+    {
+        "IR": {
+            "id": 24,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnConv2dnconv1n121",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnConv2dnconv1n121",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnConv2dnconv1n121"
+        }
+    },
+    {
+        "IR": {
+            "id": 25,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn1n122",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn1n122",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn1n122"
+        }
+    },
+    {
+        "IR": {
+            "id": 26,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn1n122_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn1n122_scale",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn1n122"
+        }
+    },
+    {
+        "IR": {
+            "id": 27,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnReLUnrelun123",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnReLUnrelun123",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn1n122"
+        }
+    },
+    {
+        "IR": {
+            "id": 28,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnConv2dnconv2n124",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnConv2dnconv2n124",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnConv2dnconv2n124"
+        }
+    },
+    {
+        "IR": {
+            "id": 29,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn2n125",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn2n125",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn2n125"
+        }
+    },
+    {
+        "IR": {
+            "id": 30,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn2n125_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn2n125_scale",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn2n125"
+        }
+    },
+    {
+        "IR": {
+            "id": 31,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennConv2dn0n126",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennConv2dn0n126",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennConv2dn0n126"
+        }
+    },
+    {
+        "IR": {
+            "id": 32,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n127",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n127",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n127"
+        }
+    },
+    {
+        "IR": {
+            "id": 33,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n127_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n127_scale",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n127"
+        }
+    },
+    {
+        "IR": {
+            "id": 34,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0n128",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0n128",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0n128"
+        }
+    },
+    {
+        "IR": {
+            "id": 35,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnReLUnrelun129",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn0nnReLUnrelun129",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn0n128"
+        }
+    },
+    {
+        "IR": {
+            "id": 36,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnConv2dnconv1n130",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnConv2dnconv1n130",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn1nnConv2dnconv1n130"
+        }
+    },
+    {
+        "IR": {
+            "id": 37,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn1n131",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn1n131",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn1n131"
+        }
+    },
+    {
+        "IR": {
+            "id": 38,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn1n131_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn1n131_scale",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn1n131"
+        }
+    },
+    {
+        "IR": {
+            "id": 39,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnReLUnrelun132",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnReLUnrelun132",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn1n131"
+        }
+    },
+    {
+        "IR": {
+            "id": 40,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnConv2dnconv2n133",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnConv2dnconv2n133",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn1nnConv2dnconv2n133"
+        }
+    },
+    {
+        "IR": {
+            "id": 41,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn2n134",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn2n134",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn2n134"
+        }
+    },
+    {
+        "IR": {
+            "id": 42,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn2n134_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn2n134_scale",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn2n134"
+        }
+    },
+    {
+        "IR": {
+            "id": 43,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1n135",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1n135",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn1n135"
+        }
+    },
+    {
+        "IR": {
+            "id": 44,
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnReLUnrelun136",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer2nnBasicBlockn1nnReLUnrelun136",
+            "port": "ResNetnSequentialnlayer2nnBasicBlockn1n135"
+        }
+    },
+    {
+        "IR": {
+            "id": 45,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnConv2dnconv1n137",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnConv2dnconv1n137",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnConv2dnconv1n137"
+        }
+    },
+    {
+        "IR": {
+            "id": 46,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn1n138",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn1n138",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn1n138"
+        }
+    },
+    {
+        "IR": {
+            "id": 47,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn1n138_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn1n138_scale",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn1n138"
+        }
+    },
+    {
+        "IR": {
+            "id": 48,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnReLUnrelun139",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnReLUnrelun139",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn1n138"
+        }
+    },
+    {
+        "IR": {
+            "id": 49,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnConv2dnconv2n140",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnConv2dnconv2n140",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnConv2dnconv2n140"
+        }
+    },
+    {
+        "IR": {
+            "id": 50,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn2n141",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn2n141",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn2n141"
+        }
+    },
+    {
+        "IR": {
+            "id": 51,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn2n141_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn2n141_scale",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn2n141"
+        }
+    },
+    {
+        "IR": {
+            "id": 52,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennConv2dn0n142",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennConv2dn0n142",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennConv2dn0n142"
+        }
+    },
+    {
+        "IR": {
+            "id": 53,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n143",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n143",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n143"
+        }
+    },
+    {
+        "IR": {
+            "id": 54,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n143_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n143_scale",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n143"
+        }
+    },
+    {
+        "IR": {
+            "id": 55,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0n144",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0n144",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0n144"
+        }
+    },
+    {
+        "IR": {
+            "id": 56,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnReLUnrelun145",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn0nnReLUnrelun145",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn0n144"
+        }
+    },
+    {
+        "IR": {
+            "id": 57,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnConv2dnconv1n146",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnConv2dnconv1n146",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn1nnConv2dnconv1n146"
+        }
+    },
+    {
+        "IR": {
+            "id": 58,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn1n147",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn1n147",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn1n147"
+        }
+    },
+    {
+        "IR": {
+            "id": 59,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn1n147_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn1n147_scale",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn1n147"
+        }
+    },
+    {
+        "IR": {
+            "id": 60,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnReLUnrelun148",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnReLUnrelun148",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn1n147"
+        }
+    },
+    {
+        "IR": {
+            "id": 61,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnConv2dnconv2n149",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnConv2dnconv2n149",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn1nnConv2dnconv2n149"
+        }
+    },
+    {
+        "IR": {
+            "id": 62,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn2n150",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn2n150",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn2n150"
+        }
+    },
+    {
+        "IR": {
+            "id": 63,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn2n150_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn2n150_scale",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn2n150"
+        }
+    },
+    {
+        "IR": {
+            "id": 64,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1n151",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1n151",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn1n151"
+        }
+    },
+    {
+        "IR": {
+            "id": 65,
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnReLUnrelun152",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer3nnBasicBlockn1nnReLUnrelun152",
+            "port": "ResNetnSequentialnlayer3nnBasicBlockn1n151"
+        }
+    },
+    {
+        "IR": {
+            "id": 66,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnConv2dnconv1n153",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnConv2dnconv1n153",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnConv2dnconv1n153"
+        }
+    },
+    {
+        "IR": {
+            "id": 67,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn1n154",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn1n154",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn1n154"
+        }
+    },
+    {
+        "IR": {
+            "id": 68,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn1n154_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn1n154_scale",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn1n154"
+        }
+    },
+    {
+        "IR": {
+            "id": 69,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnReLUnrelun155",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnReLUnrelun155",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn1n154"
+        }
+    },
+    {
+        "IR": {
+            "id": 70,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnConv2dnconv2n156",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnConv2dnconv2n156",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnConv2dnconv2n156"
+        }
+    },
+    {
+        "IR": {
+            "id": 71,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn2n157",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn2n157",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn2n157"
+        }
+    },
+    {
+        "IR": {
+            "id": 72,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn2n157_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn2n157_scale",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn2n157"
+        }
+    },
+    {
+        "IR": {
+            "id": 73,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennConv2dn0n158",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennConv2dn0n158",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennConv2dn0n158"
+        }
+    },
+    {
+        "IR": {
+            "id": 74,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n159",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n159",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n159"
+        }
+    },
+    {
+        "IR": {
+            "id": 75,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n159_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n159_scale",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n159"
+        }
+    },
+    {
+        "IR": {
+            "id": 76,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0n160",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0n160",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0n160"
+        }
+    },
+    {
+        "IR": {
+            "id": 77,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnReLUnrelun161",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn0nnReLUnrelun161",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn0n160"
+        }
+    },
+    {
+        "IR": {
+            "id": 78,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnConv2dnconv1n162",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnConv2dnconv1n162",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn1nnConv2dnconv1n162"
+        }
+    },
+    {
+        "IR": {
+            "id": 79,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn1n163",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn1n163",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn1n163"
+        }
+    },
+    {
+        "IR": {
+            "id": 80,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn1n163_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn1n163_scale",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn1n163"
+        }
+    },
+    {
+        "IR": {
+            "id": 81,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnReLUnrelun164",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnReLUnrelun164",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn1n163"
+        }
+    },
+    {
+        "IR": {
+            "id": 82,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnConv2dnconv2n165",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnConv2dnconv2n165",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn1nnConv2dnconv2n165"
+        }
+    },
+    {
+        "IR": {
+            "id": 83,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn2n166",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn2n166",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn2n166"
+        }
+    },
+    {
+        "IR": {
+            "id": 84,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn2n166_scale",
+            "port": 3
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn2n166_scale",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn2n166"
+        }
+    },
+    {
+        "IR": {
+            "id": 85,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1n167",
+            "port": 2
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1n167",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn1n167"
+        }
+    },
+    {
+        "IR": {
+            "id": 86,
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnReLUnrelun168",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnSequentialnlayer4nnBasicBlockn1nnReLUnrelun168",
+            "port": "ResNetnSequentialnlayer4nnBasicBlockn1n167"
+        }
+    },
+    {
+        "IR": {
+            "id": 87,
+            "name": "ResNetnAvgPool2dnavgpooln169",
+            "port": 1
+        },
+        "framework": {
+            "name": "ResNetnAvgPool2dnavgpooln169",
+            "port": "ResNetnAvgPool2dnavgpooln169"
+        }
+    }
+]

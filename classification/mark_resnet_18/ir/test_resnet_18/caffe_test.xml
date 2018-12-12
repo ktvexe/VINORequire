@@ -1,0 +1,2013 @@
+<?xml version="1.0" ?>
+<net batch="1" name="model" version="2">
+	<layers>
+		<layer id="0" name="input" precision="FP32" type="Input">
+			<output>
+				<port id="0">
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>224</dim>
+					<dim>224</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="1" name="ResNetnConv2dnconv1n103" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="7" kernel-y="7" output="64" pad-x="3" pad-y="3" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>224</dim>
+					<dim>224</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="0" size="37632"/>
+			</blobs>
+		</layer>
+		<layer id="2" name="ResNetnBatchNorm2dnbn1n104" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="37632" size="256"/>
+				<weights offset="37888" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="3" name="ResNetnBatchNorm2dnbn1n104_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="38144" size="256"/>
+				<biases offset="38400" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="4" name="ResNetnReLUnrelun105" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="5" name="ResNetnMaxPool2dnmaxpooln106" precision="FP32" type="Pooling">
+			<data exclude-pad="false" kernel-x="3" kernel-y="3" pad-x="1" pad-y="1" pool-method="max" rounding_type="ceil" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>112</dim>
+					<dim>112</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="6" name="ResNetnSequentialnlayer1nnBasicBlockn0nnConv2dnconv1n107" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="64" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="38656" size="147456"/>
+			</blobs>
+		</layer>
+		<layer id="7" name="ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn1n108" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="186112" size="256"/>
+				<weights offset="186368" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="8" name="ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn1n108_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="186624" size="256"/>
+				<biases offset="186880" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="9" name="ResNetnSequentialnlayer1nnBasicBlockn0nnReLUnrelun109" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="10" name="ResNetnSequentialnlayer1nnBasicBlockn0nnConv2dnconv2n110" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="64" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="187136" size="147456"/>
+			</blobs>
+		</layer>
+		<layer id="11" name="ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn2n111" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="334592" size="256"/>
+				<weights offset="334848" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="12" name="ResNetnSequentialnlayer1nnBasicBlockn0nnBatchNorm2dnbn2n111_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="335104" size="256"/>
+				<biases offset="335360" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="13" name="ResNetnSequentialnlayer1nnBasicBlockn0n112" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="14" name="ResNetnSequentialnlayer1nnBasicBlockn0nnReLUnrelun113" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="15" name="ResNetnSequentialnlayer1nnBasicBlockn1nnConv2dnconv1n114" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="64" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="335616" size="147456"/>
+			</blobs>
+		</layer>
+		<layer id="16" name="ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn1n115" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="483072" size="256"/>
+				<weights offset="483328" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="17" name="ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn1n115_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="483584" size="256"/>
+				<biases offset="483840" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="18" name="ResNetnSequentialnlayer1nnBasicBlockn1nnReLUnrelun116" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="19" name="ResNetnSequentialnlayer1nnBasicBlockn1nnConv2dnconv2n117" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="64" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="484096" size="147456"/>
+			</blobs>
+		</layer>
+		<layer id="20" name="ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn2n118" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="631552" size="256"/>
+				<weights offset="631808" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="21" name="ResNetnSequentialnlayer1nnBasicBlockn1nnBatchNorm2dnbn2n118_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="632064" size="256"/>
+				<biases offset="632320" size="256"/>
+			</blobs>
+		</layer>
+		<layer id="22" name="ResNetnSequentialnlayer1nnBasicBlockn1n119" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="23" name="ResNetnSequentialnlayer1nnBasicBlockn1nnReLUnrelun120" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="24" name="ResNetnSequentialnlayer2nnBasicBlockn0nnConv2dnconv1n121" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="128" pad-x="1" pad-y="1" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="632576" size="294912"/>
+			</blobs>
+		</layer>
+		<layer id="25" name="ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn1n122" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="927488" size="512"/>
+				<weights offset="928000" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="26" name="ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn1n122_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="928512" size="512"/>
+				<biases offset="929024" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="27" name="ResNetnSequentialnlayer2nnBasicBlockn0nnReLUnrelun123" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="28" name="ResNetnSequentialnlayer2nnBasicBlockn0nnConv2dnconv2n124" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="128" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="929536" size="589824"/>
+			</blobs>
+		</layer>
+		<layer id="29" name="ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn2n125" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="1519360" size="512"/>
+				<weights offset="1519872" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="30" name="ResNetnSequentialnlayer2nnBasicBlockn0nnBatchNorm2dnbn2n125_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="1520384" size="512"/>
+				<biases offset="1520896" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="31" name="ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennConv2dn0n126" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="128" pad-x="0" pad-y="0" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>64</dim>
+					<dim>57</dim>
+					<dim>57</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="1521408" size="32768"/>
+			</blobs>
+		</layer>
+		<layer id="32" name="ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n127" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="1554176" size="512"/>
+				<weights offset="1554688" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="33" name="ResNetnSequentialnlayer2nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n127_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="1555200" size="512"/>
+				<biases offset="1555712" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="34" name="ResNetnSequentialnlayer2nnBasicBlockn0n128" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="35" name="ResNetnSequentialnlayer2nnBasicBlockn0nnReLUnrelun129" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="36" name="ResNetnSequentialnlayer2nnBasicBlockn1nnConv2dnconv1n130" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="128" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="1556224" size="589824"/>
+			</blobs>
+		</layer>
+		<layer id="37" name="ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn1n131" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="2146048" size="512"/>
+				<weights offset="2146560" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="38" name="ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn1n131_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2147072" size="512"/>
+				<biases offset="2147584" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="39" name="ResNetnSequentialnlayer2nnBasicBlockn1nnReLUnrelun132" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="40" name="ResNetnSequentialnlayer2nnBasicBlockn1nnConv2dnconv2n133" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="128" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2148096" size="589824"/>
+			</blobs>
+		</layer>
+		<layer id="41" name="ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn2n134" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="2737920" size="512"/>
+				<weights offset="2738432" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="42" name="ResNetnSequentialnlayer2nnBasicBlockn1nnBatchNorm2dnbn2n134_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2738944" size="512"/>
+				<biases offset="2739456" size="512"/>
+			</blobs>
+		</layer>
+		<layer id="43" name="ResNetnSequentialnlayer2nnBasicBlockn1n135" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="44" name="ResNetnSequentialnlayer2nnBasicBlockn1nnReLUnrelun136" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="45" name="ResNetnSequentialnlayer3nnBasicBlockn0nnConv2dnconv1n137" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="2739968" size="1179648"/>
+			</blobs>
+		</layer>
+		<layer id="46" name="ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn1n138" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="3919616" size="1024"/>
+				<weights offset="3920640" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="47" name="ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn1n138_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="3921664" size="1024"/>
+				<biases offset="3922688" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="48" name="ResNetnSequentialnlayer3nnBasicBlockn0nnReLUnrelun139" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="49" name="ResNetnSequentialnlayer3nnBasicBlockn0nnConv2dnconv2n140" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="3923712" size="2359296"/>
+			</blobs>
+		</layer>
+		<layer id="50" name="ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn2n141" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="6283008" size="1024"/>
+				<weights offset="6284032" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="51" name="ResNetnSequentialnlayer3nnBasicBlockn0nnBatchNorm2dnbn2n141_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="6285056" size="1024"/>
+				<biases offset="6286080" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="52" name="ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennConv2dn0n142" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="256" pad-x="0" pad-y="0" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>128</dim>
+					<dim>29</dim>
+					<dim>29</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="6287104" size="131072"/>
+			</blobs>
+		</layer>
+		<layer id="53" name="ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n143" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="6418176" size="1024"/>
+				<weights offset="6419200" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="54" name="ResNetnSequentialnlayer3nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n143_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="6420224" size="1024"/>
+				<biases offset="6421248" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="55" name="ResNetnSequentialnlayer3nnBasicBlockn0n144" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="56" name="ResNetnSequentialnlayer3nnBasicBlockn0nnReLUnrelun145" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="57" name="ResNetnSequentialnlayer3nnBasicBlockn1nnConv2dnconv1n146" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="6422272" size="2359296"/>
+			</blobs>
+		</layer>
+		<layer id="58" name="ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn1n147" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="8781568" size="1024"/>
+				<weights offset="8782592" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="59" name="ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn1n147_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="8783616" size="1024"/>
+				<biases offset="8784640" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="60" name="ResNetnSequentialnlayer3nnBasicBlockn1nnReLUnrelun148" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="61" name="ResNetnSequentialnlayer3nnBasicBlockn1nnConv2dnconv2n149" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="256" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="8785664" size="2359296"/>
+			</blobs>
+		</layer>
+		<layer id="62" name="ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn2n150" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="11144960" size="1024"/>
+				<weights offset="11145984" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="63" name="ResNetnSequentialnlayer3nnBasicBlockn1nnBatchNorm2dnbn2n150_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="11147008" size="1024"/>
+				<biases offset="11148032" size="1024"/>
+			</blobs>
+		</layer>
+		<layer id="64" name="ResNetnSequentialnlayer3nnBasicBlockn1n151" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="65" name="ResNetnSequentialnlayer3nnBasicBlockn1nnReLUnrelun152" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="66" name="ResNetnSequentialnlayer4nnBasicBlockn0nnConv2dnconv1n153" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="512" pad-x="1" pad-y="1" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="11149056" size="4718592"/>
+			</blobs>
+		</layer>
+		<layer id="67" name="ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn1n154" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="15867648" size="2048"/>
+				<weights offset="15869696" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="68" name="ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn1n154_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="15871744" size="2048"/>
+				<biases offset="15873792" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="69" name="ResNetnSequentialnlayer4nnBasicBlockn0nnReLUnrelun155" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="70" name="ResNetnSequentialnlayer4nnBasicBlockn0nnConv2dnconv2n156" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="512" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="15875840" size="9437184"/>
+			</blobs>
+		</layer>
+		<layer id="71" name="ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn2n157" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="25313024" size="2048"/>
+				<weights offset="25315072" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="72" name="ResNetnSequentialnlayer4nnBasicBlockn0nnBatchNorm2dnbn2n157_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="25317120" size="2048"/>
+				<biases offset="25319168" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="73" name="ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennConv2dn0n158" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="1" kernel-y="1" output="512" pad-x="0" pad-y="0" stride="1,1,2,2" stride-x="2" stride-y="2"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>256</dim>
+					<dim>15</dim>
+					<dim>15</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="25321216" size="524288"/>
+			</blobs>
+		</layer>
+		<layer id="74" name="ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n159" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="25845504" size="2048"/>
+				<weights offset="25847552" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="75" name="ResNetnSequentialnlayer4nnBasicBlockn0nnSequentialndownsamplennBatchNorm2dn1n159_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="25849600" size="2048"/>
+				<biases offset="25851648" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="76" name="ResNetnSequentialnlayer4nnBasicBlockn0n160" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="77" name="ResNetnSequentialnlayer4nnBasicBlockn0nnReLUnrelun161" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="78" name="ResNetnSequentialnlayer4nnBasicBlockn1nnConv2dnconv1n162" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="512" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="25853696" size="9437184"/>
+			</blobs>
+		</layer>
+		<layer id="79" name="ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn1n163" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="35290880" size="2048"/>
+				<weights offset="35292928" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="80" name="ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn1n163_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="35294976" size="2048"/>
+				<biases offset="35297024" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="81" name="ResNetnSequentialnlayer4nnBasicBlockn1nnReLUnrelun164" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="82" name="ResNetnSequentialnlayer4nnBasicBlockn1nnConv2dnconv2n165" precision="FP32" type="Convolution">
+			<data dilation-x="1" dilation-y="1" group="1" kernel-x="3" kernel-y="3" output="512" pad-x="1" pad-y="1" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="35299072" size="9437184"/>
+			</blobs>
+		</layer>
+		<layer id="83" name="ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn2n166" precision="FP32" type="BatchNormalization">
+			<data epsilon="9.999999747378752e-06"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<biases offset="44736256" size="2048"/>
+				<weights offset="44738304" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="84" name="ResNetnSequentialnlayer4nnBasicBlockn1nnBatchNorm2dnbn2n166_scale" precision="FP32" type="ScaleShift">
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="3">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+			<blobs>
+				<weights offset="44740352" size="2048"/>
+				<biases offset="44742400" size="2048"/>
+			</blobs>
+		</layer>
+		<layer id="85" name="ResNetnSequentialnlayer4nnBasicBlockn1n167" precision="FP32" type="Eltwise">
+			<data coeff="" operation="sum"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="86" name="ResNetnSequentialnlayer4nnBasicBlockn1nnReLUnrelun168" precision="FP32" type="ReLU">
+			<data engine="caffe.ReLUParameter.DEFAULT" negative_slope="0.0"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="87" name="ResNetnAvgPool2dnavgpooln169" precision="FP32" type="Pooling">
+			<data exclude-pad="false" kernel-x="7" kernel-y="7" pad-x="0" pad-y="0" pool-method="avg" rounding_type="ceil" stride="1,1,1,1" stride-x="1" stride-y="1"/>
+			<input>
+				<port id="0">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>8</dim>
+					<dim>8</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1">
+					<dim>1</dim>
+					<dim>512</dim>
+					<dim>2</dim>
+					<dim>2</dim>
+				</port>
+			</output>
+		</layer>
+	</layers>
+	<edges>
+		<edge from-layer="0" from-port="0" to-layer="1" to-port="0"/>
+		<edge from-layer="1" from-port="2" to-layer="2" to-port="0"/>
+		<edge from-layer="2" from-port="3" to-layer="3" to-port="0"/>
+		<edge from-layer="3" from-port="3" to-layer="4" to-port="0"/>
+		<edge from-layer="4" from-port="1" to-layer="5" to-port="0"/>
+		<edge from-layer="5" from-port="1" to-layer="6" to-port="0"/>
+		<edge from-layer="6" from-port="2" to-layer="7" to-port="0"/>
+		<edge from-layer="7" from-port="3" to-layer="8" to-port="0"/>
+		<edge from-layer="8" from-port="3" to-layer="9" to-port="0"/>
+		<edge from-layer="9" from-port="1" to-layer="10" to-port="0"/>
+		<edge from-layer="10" from-port="2" to-layer="11" to-port="0"/>
+		<edge from-layer="11" from-port="3" to-layer="12" to-port="0"/>
+		<edge from-layer="12" from-port="3" to-layer="13" to-port="0"/>
+		<edge from-layer="5" from-port="1" to-layer="13" to-port="1"/>
+		<edge from-layer="13" from-port="2" to-layer="14" to-port="0"/>
+		<edge from-layer="14" from-port="1" to-layer="15" to-port="0"/>
+		<edge from-layer="15" from-port="2" to-layer="16" to-port="0"/>
+		<edge from-layer="16" from-port="3" to-layer="17" to-port="0"/>
+		<edge from-layer="17" from-port="3" to-layer="18" to-port="0"/>
+		<edge from-layer="18" from-port="1" to-layer="19" to-port="0"/>
+		<edge from-layer="19" from-port="2" to-layer="20" to-port="0"/>
+		<edge from-layer="20" from-port="3" to-layer="21" to-port="0"/>
+		<edge from-layer="21" from-port="3" to-layer="22" to-port="0"/>
+		<edge from-layer="14" from-port="1" to-layer="22" to-port="1"/>
+		<edge from-layer="22" from-port="2" to-layer="23" to-port="0"/>
+		<edge from-layer="23" from-port="1" to-layer="24" to-port="0"/>
+		<edge from-layer="24" from-port="2" to-layer="25" to-port="0"/>
+		<edge from-layer="25" from-port="3" to-layer="26" to-port="0"/>
+		<edge from-layer="26" from-port="3" to-layer="27" to-port="0"/>
+		<edge from-layer="27" from-port="1" to-layer="28" to-port="0"/>
+		<edge from-layer="28" from-port="2" to-layer="29" to-port="0"/>
+		<edge from-layer="29" from-port="3" to-layer="30" to-port="0"/>
+		<edge from-layer="23" from-port="1" to-layer="31" to-port="0"/>
+		<edge from-layer="31" from-port="2" to-layer="32" to-port="0"/>
+		<edge from-layer="32" from-port="3" to-layer="33" to-port="0"/>
+		<edge from-layer="30" from-port="3" to-layer="34" to-port="0"/>
+		<edge from-layer="33" from-port="3" to-layer="34" to-port="1"/>
+		<edge from-layer="34" from-port="2" to-layer="35" to-port="0"/>
+		<edge from-layer="35" from-port="1" to-layer="36" to-port="0"/>
+		<edge from-layer="36" from-port="2" to-layer="37" to-port="0"/>
+		<edge from-layer="37" from-port="3" to-layer="38" to-port="0"/>
+		<edge from-layer="38" from-port="3" to-layer="39" to-port="0"/>
+		<edge from-layer="39" from-port="1" to-layer="40" to-port="0"/>
+		<edge from-layer="40" from-port="2" to-layer="41" to-port="0"/>
+		<edge from-layer="41" from-port="3" to-layer="42" to-port="0"/>
+		<edge from-layer="42" from-port="3" to-layer="43" to-port="0"/>
+		<edge from-layer="35" from-port="1" to-layer="43" to-port="1"/>
+		<edge from-layer="43" from-port="2" to-layer="44" to-port="0"/>
+		<edge from-layer="44" from-port="1" to-layer="45" to-port="0"/>
+		<edge from-layer="45" from-port="2" to-layer="46" to-port="0"/>
+		<edge from-layer="46" from-port="3" to-layer="47" to-port="0"/>
+		<edge from-layer="47" from-port="3" to-layer="48" to-port="0"/>
+		<edge from-layer="48" from-port="1" to-layer="49" to-port="0"/>
+		<edge from-layer="49" from-port="2" to-layer="50" to-port="0"/>
+		<edge from-layer="50" from-port="3" to-layer="51" to-port="0"/>
+		<edge from-layer="44" from-port="1" to-layer="52" to-port="0"/>
+		<edge from-layer="52" from-port="2" to-layer="53" to-port="0"/>
+		<edge from-layer="53" from-port="3" to-layer="54" to-port="0"/>
+		<edge from-layer="51" from-port="3" to-layer="55" to-port="0"/>
+		<edge from-layer="54" from-port="3" to-layer="55" to-port="1"/>
+		<edge from-layer="55" from-port="2" to-layer="56" to-port="0"/>
+		<edge from-layer="56" from-port="1" to-layer="57" to-port="0"/>
+		<edge from-layer="57" from-port="2" to-layer="58" to-port="0"/>
+		<edge from-layer="58" from-port="3" to-layer="59" to-port="0"/>
+		<edge from-layer="59" from-port="3" to-layer="60" to-port="0"/>
+		<edge from-layer="60" from-port="1" to-layer="61" to-port="0"/>
+		<edge from-layer="61" from-port="2" to-layer="62" to-port="0"/>
+		<edge from-layer="62" from-port="3" to-layer="63" to-port="0"/>
+		<edge from-layer="63" from-port="3" to-layer="64" to-port="0"/>
+		<edge from-layer="56" from-port="1" to-layer="64" to-port="1"/>
+		<edge from-layer="64" from-port="2" to-layer="65" to-port="0"/>
+		<edge from-layer="65" from-port="1" to-layer="66" to-port="0"/>
+		<edge from-layer="66" from-port="2" to-layer="67" to-port="0"/>
+		<edge from-layer="67" from-port="3" to-layer="68" to-port="0"/>
+		<edge from-layer="68" from-port="3" to-layer="69" to-port="0"/>
+		<edge from-layer="69" from-port="1" to-layer="70" to-port="0"/>
+		<edge from-layer="70" from-port="2" to-layer="71" to-port="0"/>
+		<edge from-layer="71" from-port="3" to-layer="72" to-port="0"/>
+		<edge from-layer="65" from-port="1" to-layer="73" to-port="0"/>
+		<edge from-layer="73" from-port="2" to-layer="74" to-port="0"/>
+		<edge from-layer="74" from-port="3" to-layer="75" to-port="0"/>
+		<edge from-layer="72" from-port="3" to-layer="76" to-port="0"/>
+		<edge from-layer="75" from-port="3" to-layer="76" to-port="1"/>
+		<edge from-layer="76" from-port="2" to-layer="77" to-port="0"/>
+		<edge from-layer="77" from-port="1" to-layer="78" to-port="0"/>
+		<edge from-layer="78" from-port="2" to-layer="79" to-port="0"/>
+		<edge from-layer="79" from-port="3" to-layer="80" to-port="0"/>
+		<edge from-layer="80" from-port="3" to-layer="81" to-port="0"/>
+		<edge from-layer="81" from-port="1" to-layer="82" to-port="0"/>
+		<edge from-layer="82" from-port="2" to-layer="83" to-port="0"/>
+		<edge from-layer="83" from-port="3" to-layer="84" to-port="0"/>
+		<edge from-layer="84" from-port="3" to-layer="85" to-port="0"/>
+		<edge from-layer="77" from-port="1" to-layer="85" to-port="1"/>
+		<edge from-layer="85" from-port="2" to-layer="86" to-port="0"/>
+		<edge from-layer="86" from-port="1" to-layer="87" to-port="0"/>
+	</edges>
+</net>
